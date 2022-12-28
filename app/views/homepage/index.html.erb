@@ -1,0 +1,37 @@
+<div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link navbar-brand mb-0 h1" href="/">В начало</a>
+            </li>
+            <li class="nav-item active" id="links-log">
+                <% unless User.find_by_id(session[:current_user_id]).nil? %>
+                    <a class="nav-link navbar-brand mb-0 h1" href="/log/sign_out">Log Out</a>
+                <% else %>
+                    <a class="nav-link navbar-brand mb-0 h1" href="/log/sign_in">Log In</a>
+                    <a class="nav-link navbar-brand mb-0 h1" href="/users/new">Sign Up</a>
+                <% end %>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="main">
+    <div class="container">
+        <p>На сайте зарегистрировано <%= User.count %></p>
+        <% if !session[:current_user_id].nil? && session[:current_user_id] > 0 %>
+            <div id="form">
+                <%= form_with url: "example/show", method: :post do |form| %>
+                <%= form.label :input_value, 'Введите число, для которого нужно найти факториал: ', :class => 'label-form' %><br>
+                <%= form.text_field :input_value, value: '25' %><br/><br/>
+                <%= form.submit 'Вывести результат', id: "show_result", class: 'btn btn-warning' %>
+                <% end %>
+                <br>
+                <div id='show_container'></div>
+            </div>
+        <% end %>
+        <div id="result"></div>
+    </div>
+</div>
+<div class="footer">
+</div>
+

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link navbar-brand mb-0 h1" href="/">В начало</a>
+            <%# <%= button_to 'На главную', root_path, method: :get %> 
+        </li>
+    </ul>
+</nav>
+<div class="container">
+  <div class="form-group row m-2">
+    <%= form_with url: "/log/log", method: :post do |form| %>
+      <div class="email">
+        <%= form.label :email, "Email:", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">          
+            <%= form.text_field :email %>
+          </div>
+      </div>
+      <div class="password">
+        <%= form.label :password, "Password:", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.password_field :password %>
+          </div>          
+      </div>
+      <div class="m-2">
+        <%= form.submit "Log In" , class: 'btn btn-success' %>
+      </div>
+    <% end %>
+
+    <div id="msg"></div>
+    <br>
+  </div>
+</div>

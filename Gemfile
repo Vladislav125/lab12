@@ -66,3 +66,14 @@ end
 
 
 gem "rspec-rails", "~> 6.0"
+
+gem "bcrypt", "~> 3.1"
+
+gem "rails-controller-testing", "~> 1.0"
+
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
+end
